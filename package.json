@@ -1,0 +1,16 @@
+{
+  "name": "givself-contracts",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "lint": "buf lint",
+    "breaking": "buf breaking --against .git#branch=main",
+    "generate": "buf generate",
+    "build": "buf lint && buf generate",
+    "pack": "cd gen/ts && npm run build && npm pack --pack-destination ../../"
+  },
+  "devDependencies": {
+    "@bufbuild/protobuf": "^2.0.0",
+    "@bufbuild/protoc-gen-es": "^2.0.0"
+  }
+}

@@ -1,0 +1,44 @@
+syntax = "proto3";
+package givself.v1;
+
+import "google/protobuf/timestamp.proto";
+
+message PowerFlows {
+  int32 solar_to_house_w = 1;
+  int32 solar_to_battery_w = 2;
+  int32 solar_to_grid_w = 3;
+  int32 battery_to_house_w = 4;
+  int32 battery_to_grid_w = 5;
+  int32 grid_to_house_w = 6;
+  int32 grid_to_battery_w = 7;
+}
+
+message LivePowerData {
+  google.protobuf.Timestamp timestamp = 1;
+  int32 pv_power_w = 2;
+  int32 pv1_power_w = 3;
+  int32 pv2_power_w = 4;
+  float pv1_voltage_v = 5;
+  float pv2_voltage_v = 6;
+  int32 battery_soc = 7;
+  float battery_soc_kwh = 8;
+  int32 battery_power_w = 9;
+  float battery_voltage_v = 10;
+  float battery_temperature_c = 11;
+  int32 grid_power_w = 12;
+  float grid_voltage_v = 13;
+  float grid_current_a = 14;
+  float grid_frequency_hz = 15;
+  int32 load_power_w = 16;
+  PowerFlows flows = 17;
+}
+
+message EnergyTotals {
+  float pv_generation_kwh = 1;
+  float grid_import_kwh = 2;
+  float grid_export_kwh = 3;
+  float battery_charge_kwh = 4;
+  float battery_discharge_kwh = 5;
+  float consumption_kwh = 6;
+  float self_consumption_kwh = 7;
+}

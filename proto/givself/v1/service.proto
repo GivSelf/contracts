@@ -1,0 +1,38 @@
+syntax = "proto3";
+package givself.v1;
+
+import "givself/v1/energy.proto";
+import "givself/v1/battery.proto";
+import "givself/v1/schedule.proto";
+import "givself/v1/control.proto";
+import "givself/v1/websocket.proto";
+
+service EnergyService {
+  // Read
+  rpc GetLivePower(Empty) returns (LivePowerData);
+  rpc GetEnergyToday(Empty) returns (EnergyTotals);
+  rpc GetEnergyTotal(Empty) returns (EnergyTotals);
+  rpc GetBatteries(Empty) returns (BatteriesUpdate);
+  rpc GetSystemInfo(Empty) returns (SystemInfo);
+  rpc GetSchedules(Empty) returns (ScheduleState);
+
+  // Control
+  rpc SetChargeRate(SetRateRequest) returns (Empty);
+  rpc SetDischargeRate(SetRateRequest) returns (Empty);
+  rpc SetBatteryReserve(SetSocRequest) returns (Empty);
+  rpc SetChargeTarget(SetSocRequest) returns (Empty);
+  rpc SetBatteryMode(SetModeRequest) returns (Empty);
+  rpc SetChargeSlot(SetSlotRequest) returns (Empty);
+  rpc SetDischargeSlot(SetSlotRequest) returns (Empty);
+  rpc EnableChargeSchedule(EnableRequest) returns (Empty);
+  rpc EnableDischargeSchedule(EnableRequest) returns (Empty);
+
+  // Boost
+  rpc ForceCharge(BoostRequest) returns (Empty);
+  rpc ForceExport(BoostRequest) returns (Empty);
+  rpc CancelForce(Empty) returns (Empty);
+
+  // System
+  rpc Reboot(Empty) returns (Empty);
+  rpc SyncTime(Empty) returns (Empty);
+}

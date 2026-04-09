@@ -1,0 +1,29 @@
+syntax = "proto3";
+package givself.v1;
+
+message BatteryDetail {
+  string serial_number = 1;
+  int32 soc = 2;
+  float voltage_v = 3;
+  float temperature_c = 4;
+  float capacity_kwh = 5;
+  float design_capacity_kwh = 6;
+  float remaining_capacity_kwh = 7;
+  int32 cycles = 8;
+  repeated float cell_voltages = 9;
+  repeated float cell_temperatures = 10;
+  int32 firmware_version = 11;
+}
+
+message SystemInfo {
+  string model = 1;
+  string serial_number = 2;
+  string firmware_version = 3;
+  int32 inverter_max_power_w = 4;
+  int32 battery_max_power_w = 5;
+  float battery_capacity_kwh = 6;
+  string battery_type = 7;
+  int32 num_batteries = 8;
+  int32 num_mppt = 9;
+  int32 num_phases = 10;
+}

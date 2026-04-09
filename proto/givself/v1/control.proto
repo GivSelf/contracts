@@ -1,0 +1,31 @@
+syntax = "proto3";
+package givself.v1;
+
+import "givself/v1/schedule.proto";
+
+message SetRateRequest {
+  int32 percent = 1;
+}
+
+message SetSocRequest {
+  int32 soc_percent = 1;
+}
+
+message BoostRequest {
+  int32 duration_minutes = 1;
+}
+
+message SetSlotRequest {
+  int32 index = 1;
+  TimeSlot slot = 2;
+}
+
+message SetModeRequest {
+  BatteryMode mode = 1;
+}
+
+message EnableRequest {
+  bool enabled = 1;
+}
+
+message Empty {}

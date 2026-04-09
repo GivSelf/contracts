@@ -1,0 +1,25 @@
+syntax = "proto3";
+package givself.v1;
+
+enum BatteryMode {
+  BATTERY_MODE_UNSPECIFIED = 0;
+  BATTERY_MODE_ECO = 1;
+  BATTERY_MODE_TIMED_DEMAND = 2;
+  BATTERY_MODE_TIMED_EXPORT = 3;
+}
+
+message TimeSlot {
+  string start = 1;
+  string end = 2;
+  int32 target_soc = 3;
+}
+
+message ScheduleState {
+  bool charge_enabled = 1;
+  bool discharge_enabled = 2;
+  repeated TimeSlot charge_slots = 3;
+  repeated TimeSlot discharge_slots = 4;
+  int32 charge_target_soc = 5;
+  int32 battery_reserve_soc = 6;
+  BatteryMode battery_mode = 7;
+}

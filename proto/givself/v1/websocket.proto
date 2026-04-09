@@ -1,0 +1,32 @@
+syntax = "proto3";
+package givself.v1;
+
+import "givself/v1/energy.proto";
+import "givself/v1/battery.proto";
+import "givself/v1/schedule.proto";
+
+message BoostState {
+  bool active = 1;
+  string kind = 2;
+  int32 remaining_seconds = 3;
+}
+
+message SystemStatus {
+  bool connected = 1;
+  string adapter = 2;
+}
+
+message BatteriesUpdate {
+  repeated BatteryDetail batteries = 1;
+}
+
+message WsServerMessage {
+  oneof payload {
+    LivePowerData live_power = 1;
+    EnergyTotals live_energy = 2;
+    BatteriesUpdate live_batteries = 3;
+    SystemStatus system_status = 4;
+    BoostState boost_state = 5;
+    ScheduleState schedule_updated = 6;
+  }
+}
